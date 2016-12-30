@@ -3,6 +3,7 @@ import geopy
 from StringIO import StringIO
 from matplotlib import image as img
 from numpy import array
+import matplotlib.pyplot as plt
 
 class Greengraph(object):
     def __init__(self, start, end):

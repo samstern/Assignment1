@@ -1,6 +1,6 @@
 import numpy as np
 import geopy
-from StringIO import StringIO
+from io import StringIO
 from matplotlib import image as img
 from numpy import array
 import matplotlib.pyplot as plt

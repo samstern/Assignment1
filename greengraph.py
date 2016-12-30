@@ -1,10 +1,11 @@
 import numpy as np
 import geopy
-from io import StringIO
+from io import BytesIO
 from matplotlib import image as img
 from numpy import array
 import matplotlib.pyplot as plt
 import requests
+
 
 class Greengraph(object):
     def __init__(self, start, end):
@@ -13,17 +14,16 @@ class Greengraph(object):
         self.geocoder=geopy.geocoders.GoogleV3(domain="maps.google.co.uk")
     def geolocate(self, place):
         return self.geocoder.geocode(place,exactly_one=False)[0][1]
-
     def location_sequence(self, start,end,steps):
         lats = np.linspace(start[0], end[0], steps)
         longs = np.linspace(start[1],end[1], steps)
         return np.vstack([lats, longs]).transpose()
-
     def green_between(self, steps):
         return [Map(*location).count_green()
             for location in self.location_sequence(
             self.geolocate(self.start),
             self.geolocate(self.end), steps)]
+
 
 class Map(object):
     def __init__(self, lat, long, satellite=True, zoom=10, size=(400,400), sensor=False):
@@ -38,7 +38,7 @@ class Map(object):
             params["maptype"]="satellite"
         self.image = requests.get(base, params=params).content
         # Fetch our PNG image data
-        self.pixels= img.imread(StringIO(self.image))
+        self.pixels = img.imread(BytesIO(self.image))
         # Parse our PNG image as a numpy array
 
     def green(self, threshold):
@@ -54,10 +54,11 @@ class Map(object):
     def show_green(self, data, threshold = 1.1):
         green = self.green(threshold)
         out = green[:,:,np.newaxis]*array([0,1,0])[np.newaxis,np.newaxis,:]
-        buffer = StringIO()
+        buffer = BytesIO()
         result = img.imsave(buffer, out, format='png')
         return buffer.getvalue()
 
-    mygraph=Greengraph('New York','Chicago')
-    data = mygraph.green_between(20)
-    plt.plot(data)
+
+mygraph=Greengraph('New York','Chicago')
+data = mygraph.green_between(20)
+plt.plot(data)

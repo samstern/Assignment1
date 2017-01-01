@@ -1,3 +1,3 @@
 #!/usr/bin/env python
-from greengraph.greengraph import runGreengraph
+from Greengraph.greengraph import runGreengraph
 runGreengraph()

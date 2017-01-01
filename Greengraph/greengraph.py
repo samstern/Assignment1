@@ -1,6 +1,6 @@
 import numpy as np
 import geopy
-from map import Map
+from Greengraph.map import Map
 
 
 

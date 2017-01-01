@@ -1,4 +1,4 @@
-from greengraph import Greengraph
+from Greengraph.greengraph import Greengraph
 import matplotlib.pyplot as plt
 from argparse import ArgumentParser
 

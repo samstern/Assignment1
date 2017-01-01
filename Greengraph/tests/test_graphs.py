@@ -1,6 +1,7 @@
 from ..greengraph import Greengraph
 import geopy
 from nose.tools import assert_equal, assert_almost_equal
+import numpy.testing as np_test
 from mock import Mock, patch
 import yaml
 import os
@@ -30,6 +31,13 @@ def test_geolocate():
 
 
 def test_location_sequence():
-    pass
+    sequence=Greengraph.location_sequence(Greengraph("New York","Chicago"), (0,0),(20,20),5)
+    np_test.assert_equal(sequence[0],(0,0))
+    np_test.assert_equal(sequence[1],(5.0,5.0))
+    np_test.assert_equal(sequence[2],(10.0,10.0))
+    np_test.assert_equal(sequence[-1],(20.0,20.0))
+
+
+
 def test_green_between():
     pass

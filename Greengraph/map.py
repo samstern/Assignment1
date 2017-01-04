@@ -17,7 +17,7 @@ class Map(object):
             params["maptype"]="satellite"
         self.image = requests.get(base, params=params).content
         # Fetch our PNG image data
-        self.pixels = img.imread(BytesIO(self.image))
+        self.pixels = img.imread(self.image)
         # Parse our PNG image as a numpy array
 
     def green(self, threshold):

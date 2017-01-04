@@ -50,9 +50,17 @@ def test_green():
     fixture_green = np.load(os.path.join(os.path.dirname(__file__),'fixtures','ny_green.npy'))
     threshold = 1.1
     with patch('requests.get', return_value=Mock(content=mock_image.read())) as mock_get:
-        testMap = Map(41.8781136, -87.6297982) #NY
+        testMap = Map(41.8781136, -87.6297982) # New York
         assert_equal(fixture_green.shape,testMap.green(threshold).shape)
         assert (testMap.green(threshold) == fixture_green).all() == True
+        assert (testMap.green(1.5) == fixture_green).all() == False
 
 def test_count_green():
-    
+    mock_image= open(os.path.join(os.path.dirname(__file__),'fixtures','NY_2.png'),'rb')
+    fixture_green = np.load(os.path.join(os.path.dirname(__file__),'fixtures','ny_green.npy'))
+    threshold = 1.1
+    with patch('requests.get', return_value=Mock(content=mock_image.read())) as mock_get:
+        testMap = Map(41.8781136, -87.6297982) # New York
+        count_from_fixture=np.sum(fixture_green)
+        assert (testMap.count_green() == count_from_fixture)
+        assert (testMap.count_green(1.5) != count_from_fixture)

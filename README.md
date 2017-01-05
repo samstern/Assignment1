@@ -4,6 +4,6 @@ Python 3 program that creates a plots of how much the greenery between two locat
 
 #Installation
 This package can be installed using pip with:<br />
-pip install git+git://github.com/samstern/Greengraph-<br />
+pip3 install git+git://github.com/samstern/Greengraph<br />
 It can then be unistalled when finished using:<br />
 pip uninstall greengraph

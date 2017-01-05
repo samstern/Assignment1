@@ -1,0 +1,19 @@
+# Usage and Entry point
+
+The greengraph program can by installed by running sudo python setup.py install. To run the program, type greengraph into the command prompt. The following arguments may be added:  --start –-end –-steps which indicate where to start, where to stop, and the number of datapoints. If no other input arguments are added, the default settings are 20 data points from New York to Chicago. If the –h or --h are added then a help message is printed.
+
+
+# Problems Encountered
+
+The first few steps of the coursework exercise went quite smoothly. The IDE I use pointed some of the minor errors that would have kept the code from compiling. The only real issue I encountered at first was around how to name files and directories, especially when breaking up the code.
+By far the most time consuming part, and where I encountered many issues was in creating the tests. A lot of it can probably be classed as unfamiliarity with mocks, though it also took me a while to figure out how to get the various data and png files for the fixtures.
+
+
+# Advantages and Disadvantages of Packaging
+
+Packaging (and package managers) are of great advantage to users of the software as it makes the installation process quick and painless. Without them, installing the software and resolving dependencies can be horribly tedious. Packaging also provides advantages for the developer as it means he/she doesn’t need to worry about the OS that the software will be run on. The largest disadvantage to packaging software seems to be that as the project becomes larger, maintaining the setup.py and ensuring the code is platform-independent can become nontrivial and time consuming.
+Package indexes such as PyPI area great market place for finding useful packages (saving yourself the hassle of doing work someone already has) and publicising your own package
+
+Building a Community
+
+Making your code open source and easy to install and find are all important if you with to build a community around a project. Furthermore, it is important to maintain the project and do everything possible to address any issues in a timely manner, otherwise users will become fed up and stop using it.
